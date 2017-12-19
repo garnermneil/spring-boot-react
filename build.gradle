@@ -1,0 +1,44 @@
+allprojects {
+    group 'garnermneil'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+}
+
+subprojects {
+    ext.springVersion = '1.5.9.RELEASE'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.3.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+jar.archiveName = 'spring-boot-react.jar'
+
+bootRepackage {
+    mainClass = 'garnermneil.react.ReactApplication'
+}
+
+springBoot {
+    mainClass = 'garnermneil.react.ReactApplication'
+}
+
+dependencies {
+    compile project(":server")
+    compile project(":web")
+}

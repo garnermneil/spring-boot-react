@@ -1,0 +1,22 @@
+processResources.dependsOn 'buildWeb'
+test.dependsOn 'npmTest'
+
+task dev_server(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'start']
+}
+
+task add_dev_pkg(type: NpmTask, dependsOn: npmInstall) {
+    args = ['install', project.hasProperty('pkgname') ? pkgname : '', '--save-dev']
+}
+
+task add_pkg(type: NpmTask, dependsOn: npmInstall) {
+    args = ['install', project.hasProperty('pkgname') ? pkgname : '', '--save']
+}
+
+task npmTest(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'test']
+}
+
+task buildWeb(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'build']
+}

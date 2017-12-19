@@ -1,0 +1,6 @@
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springVersion
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
+}
