@@ -14,18 +14,18 @@ module.exports = merge(baseConfig, {
     plugins: [
         // Clear out `build` directory between builds
         new CleanWebpackPlugin(['build'], {
-            root: process.cwd(),
+            root: process.cwd()
         }),
         // Extract imported CSS into own file
         new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
         // Minify JS
         new UglifyJsPlugin({
             sourceMap: false,
-            compress: true,
+            compress: true
         }),
         // Minify CSS
         new webpack.LoaderOptionsPlugin({
-            minimize: true,
-        }),
-    ],
+            minimize: true
+        })
+    ]
 });

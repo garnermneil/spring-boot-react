@@ -1,23 +1,24 @@
 import React from 'react';
 
-export default class App extends React.Component {
-    constructor(props) {
+export class Film extends React.Component {
+    constructor (props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            films: []
+            opening: []
         };
-    };
+    }
 
-    componentDidMount() {
-        fetch("api/swapi/films")
+    componentDidMount () {
+        fetch("api/swapi/films/" + this.props.episodeId)
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(">>> result", result);
                     this.setState({
                         isLoaded: true,
-                        films: result
+                        opening: result.opening_crawl
                     });
                 },
                 (error) => {
@@ -26,25 +27,19 @@ export default class App extends React.Component {
                         error
                     });
                 }
-            )
-    };
+            );
+    }
 
-    render() {
-        const { error, isLoaded, films } = this.state;
+    render () {
+        const { error, isLoaded, opening } = this.state;
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div>Error: { error.message }</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
-                    {films.map(film => (
-                        <li key={film.episode_id}>
-                            {film.episode_id} {film.title}
-                        </li>
-                    ))}
-                </ul>
+                <span>{opening}</span>
             );
         }
-    };
+    }
 }

@@ -10,7 +10,11 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, '../src/index.js'),
+        app: path.join(__dirname, '../src/index.js')
+    },
+
+    resolve: {
+        extensions: [' ', '.js', '.jsx', '.json', '.css', '.scss', '.html']
     },
 
     module: {
@@ -21,16 +25,16 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         query: {
-                            presets: ['es2015'],
-                        },
+                            presets: ['es2015']
+                        }
                     },
                     {
                         loader: 'react-svg-loader',
                         query: {
-                            jsx: true,
-                        },
-                    },
-                ],
+                            jsx: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.js$/,
@@ -45,15 +49,15 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-            },
-        ],
+                loader: 'babel-loader'
+            }
+        ]
     },
 
     plugins: [
         new webpack.EnvironmentPlugin([
-            'NODE_ENV',
+            'NODE_ENV'
         ]),
-        HtmlWebpackPluginConfig,
-    ],
+        HtmlWebpackPluginConfig
+    ]
 };

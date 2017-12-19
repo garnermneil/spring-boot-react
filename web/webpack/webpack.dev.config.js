@@ -10,11 +10,11 @@ module.exports = merge(baseConfig, {
         port: '9090',
         hot: true,
         proxy: {
-            "/api": "http://localhost:8080"
+            '/api': 'http://localhost:8080'
         }
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 });

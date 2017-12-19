@@ -10,6 +10,9 @@ public class Film {
     @JsonProperty("episode_id")
     private Integer episodeId;
 
+    @JsonProperty("opening_crawl")
+    private String opening;
+
     public void setTitle(final String title) {
         this.title = title;
     }
@@ -24,5 +27,13 @@ public class Film {
 
     public Integer getEpisodeId() {
         return episodeId;
+    }
+
+    public void setOpening(final String opening) {
+        this.opening = opening;
+    }
+
+    public String getOpening() {
+        return opening;
     }
 }
